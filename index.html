@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#102f26" />
+  <meta name="description" content="Custodi del Territorio: esplora San Paolo, Ostiense e Testaccio attraverso storie, natura e missioni." />
+  <title>Custodi del Territorio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Custodi del Territorio, torna all'inizio">
+      <span class="brand-symbol" aria-hidden="true">C</span>
+      <span><strong>Custodi</strong><small>del territorio</small></span>
+    </a>
+    <nav aria-label="Navigazione principale">
+      <a href="#esplora">Esplora</a><a href="#missioni">Missioni</a><a href="#impatto">Il progetto</a>
+    </nav>
+    <button class="passport-mini" id="passport-mini" aria-label="Apri il passaporto delle scoperte">
+      <span>Passaporto</span><strong id="header-progress">0/8</strong>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <img class="hero-image" src="assets/hero-territorio.png" alt="Giovani esploratori osservano il Tevere, il Gazometro, la Basilica di San Paolo e il paesaggio urbano" />
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <p class="kicker light">San Paolo · Ostiense · Testaccio</p>
+        <h1>Il territorio<br />diventa <em>maestro.</em></h1>
+        <p class="hero-lead">Un viaggio interattivo tra natura, memoria e comunità. Osserva, ascolta, raccogli indizi e diventa custode dei luoghi che vivi.</p>
+        <div class="hero-actions">
+          <a class="button button-sun" href="#esplora">Inizia il viaggio <span>→</span></a>
+          <button class="button button-ghost" id="open-intro"><span class="play">▶</span> Come funziona</button>
+        </div>
+      </div>
+      <div class="hero-stat"><strong>8</strong><span>luoghi<br />da scoprire</span></div>
+      <a class="scroll-cue" href="#esplora"><span></span>Scorri per esplorare</a>
+    </section>
+
+    <section class="route-picker" id="esplora">
+      <div class="section-intro">
+        <div><p class="kicker">Scegli il tuo sguardo</p><h2>Tre percorsi,<br /><em>un solo territorio.</em></h2></div>
+        <p>Ogni itinerario cambia il modo di osservare: natura per i più piccoli, trasformazioni urbane per i più grandi, oppure il racconto completo.</p>
+      </div>
+      <div class="route-tabs" role="tablist" aria-label="Seleziona un percorso">
+        <button class="route-tab active" role="tab" aria-selected="true" data-route="all"><span>00</span><strong>Tutto il territorio</strong><small>8 tappe · esperienza completa</small></button>
+        <button class="route-tab" role="tab" aria-selected="false" data-route="nature"><span>01</span><strong>Dal fiume alla città</strong><small>Infanzia e primaria</small></button>
+        <button class="route-tab" role="tab" aria-selected="false" data-route="city"><span>02</span><strong>La città che cambia</strong><small>Secondaria</small></button>
+      </div>
+
+      <div class="explorer-layout">
+        <div class="map-shell">
+          <div class="map-topline"><span><i></i> Mappa interattiva</span><span id="visible-count">8 tappe</span></div>
+          <div class="territory-map" id="territory-map">
+            <svg viewBox="0 0 1000 620" role="img" aria-label="Mappa illustrata dei quartieri San Paolo, Ostiense e Testaccio">
+              <defs>
+                <linearGradient id="mapBg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#dce7d8"/><stop offset="1" stop-color="#e9ddbd"/></linearGradient>
+                <filter id="paper"><feTurbulence baseFrequency=".8" numOctaves="2" stitchTiles="stitch" result="noise"/><feBlend in="SourceGraphic" in2="noise" mode="multiply"/></filter>
+              </defs>
+              <rect width="1000" height="620" rx="28" fill="url(#mapBg)"/>
+              <path d="M-30 480 C180 352 276 546 454 418 S738 274 1030 172" fill="none" stroke="#87b4b5" stroke-width="86" opacity=".95"/>
+              <path d="M-30 480 C180 352 276 546 454 418 S738 274 1030 172" fill="none" stroke="#b8d2cb" stroke-width="42" opacity=".75"/>
+              <g fill="none" stroke="#f7f0df" stroke-width="16" stroke-linecap="round" opacity=".9">
+                <path d="M25 105L310 220 480 165 742 282 980 240"/><path d="M96 585L250 390 416 300 580 518 820 430 965 552"/><path d="M150 30L225 178 180 330"/><path d="M700 50L642 188 745 282 842 337"/>
+              </g>
+              <g fill="#d2c9a9" opacity=".75">
+                <rect x="68" y="90" width="116" height="69" rx="9"/><rect x="220" y="77" width="150" height="90" rx="9"/><rect x="420" y="70" width="106" height="72" rx="9"/>
+                <rect x="710" y="78" width="128" height="75" rx="9"/><rect x="820" y="280" width="121" height="90" rx="9"/><rect x="535" y="435" width="105" height="68" rx="9"/>
+                <rect x="90" y="362" width="116" height="78" rx="9"/><rect x="265" y="250" width="92" height="60" rx="9"/>
+              </g>
+              <g fill="#6f8c68" opacity=".9">
+                <circle cx="103" cy="240" r="41"/><circle cx="151" cy="266" r="36"/><circle cx="207" cy="482" r="45"/><circle cx="674" cy="394" r="49"/><circle cx="741" cy="468" r="40"/><circle cx="903" cy="470" r="43"/>
+              </g>
+              <text x="80" y="55">TESTACCIO</text><text x="425" y="42">OSTIENSE</text><text x="790" y="590">SAN PAOLO</text>
+              <text class="river-label" x="470" y="390" transform="rotate(-27 470 390)">TEVERE</text>
+            </svg>
+            <div id="map-markers"></div>
+            <div class="map-legend"><span><i class="dot nature"></i>Natura</span><span><i class="dot culture"></i>Cultura</span><span><i class="dot memory"></i>Memoria</span></div>
+          </div>
+        </div>
+        <aside class="next-card" id="next-card" aria-live="polite"></aside>
+      </div>
+    </section>
+
+    <section class="passport-section" id="missioni">
+      <div class="passport-copy">
+        <p class="kicker light">Il passaporto del custode</p>
+        <h2>Non limitarti<br />a guardare.<br /><em>Lascia una traccia.</em></h2>
+        <p>Ogni tappa propone una piccola missione: osservare, ascoltare, raccogliere una memoria o immaginare il futuro. Le scoperte restano salvate sul dispositivo.</p>
+        <div class="progress-block"><div><span>Il tuo cammino</span><strong id="progress-label">0%</strong></div><div class="progress-line"><i id="progress-line"></i></div></div>
+      </div>
+      <div class="passport-book">
+        <div class="book-spine"></div>
+        <div class="book-head"><span>Passaporto digitale</span><strong id="stamp-count">0 timbri</strong></div>
+        <div class="stamp-grid" id="stamp-grid"></div>
+        <div class="book-foot"><span>CUSTODE N° <strong id="custodian-number">----</strong></span><button id="reset-progress">Azzera percorso</button></div>
+      </div>
+    </section>
+
+    <section class="impact-section" id="impatto">
+      <div class="impact-title"><p class="kicker">Dall'esperienza alla comunità</p><h2>Un progetto che<br />continua <em>fuori dallo schermo.</em></h2></div>
+      <div class="impact-flow">
+        <article><span>01</span><div class="impact-icon">⌖</div><h3>Esplora</h3><p>Uscite didattiche, osservazione del paesaggio e incontro con i luoghi.</p></article>
+        <article><span>02</span><div class="impact-icon">✎</div><h3>Raccogli</h3><p>Fotografie, disegni, testimonianze, suoni e piccoli dati di campo.</p></article>
+        <article><span>03</span><div class="impact-icon">◉</div><h3>Racconta</h3><p>Schede, podcast, mappe, documentari e materiali accessibili in CAA.</p></article>
+        <article><span>04</span><div class="impact-icon">∞</div><h3>Condividi</h3><p>QR code, mostra finale e una memoria digitale aperta alla cittadinanza.</p></article>
+      </div>
+      <div class="inclusion-banner">
+        <div><span class="banner-symbol">✦</span><p class="kicker light">Progettato per includere</p><h3>Più modi di sentire,<br />più modi di partecipare.</h3></div>
+        <ul><li>Testi brevi e leggibili</li><li>Audio e contenuti multisensoriali</li><li>Materiali CAA integrabili</li><li>Navigazione da tastiera</li></ul>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <p class="kicker light">La città è un libro aperto</p><h2>Quale storia<br />scoprirai per prima?</h2><a class="button button-sun" href="#esplora">Apri la mappa <span>→</span></a>
+    </section>
+  </main>
+
+  <footer><div class="brand inverted"><span class="brand-symbol">C</span><span><strong>Custodi</strong><small>del territorio</small></span></div><p>Un progetto educativo per conoscere, custodire e raccontare il territorio.</p><span>Prototipo 2026</span></footer>
+
+  <dialog id="place-dialog">
+    <button class="close-dialog" id="close-dialog" aria-label="Chiudi">×</button>
+    <div class="dialog-hero" id="dialog-hero"><div><span id="dialog-index"></span><p id="dialog-type"></p><h2 id="dialog-name"></h2></div></div>
+    <div class="dialog-body">
+      <div class="dialog-main"><p class="place-subtitle" id="dialog-subtitle"></p><p id="dialog-description"></p><blockquote id="dialog-story"></blockquote></div>
+      <aside><p class="mini-label">Missione sul campo</p><div class="mission-symbol" id="mission-symbol">◎</div><h3 id="dialog-mission-title"></h3><p id="dialog-mission"></p><button class="button button-dark" id="complete-mission">Completa missione <span>＋</span></button></aside>
+    </div>
+  </dialog>
+
+  <dialog id="intro-dialog" class="intro-dialog">
+    <button class="close-dialog" id="close-intro" aria-label="Chiudi">×</button>
+    <p class="kicker">In tre gesti</p><h2>Esplora. Osserva.<br />Diventa custode.</h2>
+    <div class="intro-steps"><div><span>1</span><strong>Scegli un percorso</strong><p>Adatto all'età e agli interessi della classe.</p></div><div><span>2</span><strong>Apri le tappe</strong><p>Scopri storie, natura e trasformazioni.</p></div><div><span>3</span><strong>Completa le missioni</strong><p>Costruisci il passaporto e condividi ciò che impari.</p></div></div>
+    <button class="button button-dark" id="intro-start">Cominciamo <span>→</span></button>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
