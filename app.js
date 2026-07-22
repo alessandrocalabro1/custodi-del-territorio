@@ -1,37 +1,184 @@
-const places=[
- {id:"testaccio",name:"Monte Testaccio",subtitle:"La montagna fatta di storie",type:"Memoria",kind:"memory",route:"city",icon:"🏺",x:16,y:23,description:"Una collina costruita dall'uomo con milioni di frammenti di anfore romane. Ogni coccio racconta commerci, viaggi e abitudini dell'antica Roma.",story:"Non è solo una collina: è un archivio a cielo aperto dell'economia mediterranea.",missionTitle:"Leggi un frammento",mission:"Osserva forme, colori e stratificazioni. Disegna un frammento e immagina quale viaggio potrebbe aver compiuto."},
- {id:"emporium",name:"Emporium e porto fluviale",subtitle:"Roma arrivava dal Tevere",type:"Archeologia",kind:"memory",route:"city",icon:"⚓",x:31,y:43,description:"Qui approdavano merci provenienti da tutto il Mediterraneo. Il fiume era una grande strada d'acqua che nutriva e collegava la città.",story:"Prima delle ferrovie e dei camion, il Tevere era la porta commerciale di Roma.",missionTitle:"Traccia la rotta",mission:"Scegli una merce dell'antichità e disegna sulla mappa il viaggio dal suo luogo d'origine fino a Roma."},
- {id:"centrale",name:"Centrale Montemartini",subtitle:"Macchine e statue nello stesso racconto",type:"Cultura",kind:"culture",route:"city",icon:"⚙️",x:46,y:24,description:"Una ex centrale elettrica ospita oggi capolavori dell'arte antica. Il contrasto tra turbine e statue rende visibile il dialogo tra epoche diverse.",story:"La città non cancella sempre il passato: a volte lo mette in conversazione con il presente.",missionTitle:"Cerca il contrasto",mission:"Trova due elementi di epoche diverse. Fotografali o descrivili e spiega perché funzionano bene insieme."},
- {id:"gazometro",name:"Gazometro",subtitle:"L'icona industriale di Ostiense",type:"Città",kind:"culture",route:"city",icon:"◉",x:60,y:39,description:"La grande struttura metallica è diventata il simbolo del quartiere industriale. Oggi parla di trasformazione urbana, creatività e rigenerazione.",story:"Un'infrastruttura può smettere di funzionare e continuare a dare identità a un luogo.",missionTitle:"Immagina il futuro",mission:"Progetta un nuovo uso culturale o ambientale per uno spazio industriale dismesso del quartiere."},
- {id:"streetart",name:"Street art Ostiense",subtitle:"I muri prendono la parola",type:"Arte urbana",kind:"culture",route:"city",icon:"🎨",x:71,y:54,description:"Murales e interventi di arte urbana trasformano facciate e passaggi in pagine pubbliche. Colori e simboli raccontano comunità, conflitti e speranze.",story:"Un muro può separare, ma può anche diventare uno spazio di racconto condiviso.",missionTitle:"Decifra il messaggio",mission:"Scegli un simbolo o un colore ricorrente e scrivi in una frase il messaggio che ti trasmette."},
- {id:"schuster",name:"Parco Schuster",subtitle:"Un giardino tra storia e quartiere",type:"Natura",kind:"nature",route:"nature",icon:"🌳",x:84,y:76,description:"Uno spazio verde vicino alla Basilica, luogo di incontro e osservazione. Alberi, prati e piccola fauna urbana mostrano come la natura abiti la città.",story:"Anche un parco urbano è un ecosistema: piccolo, fragile e pieno di relazioni.",missionTitle:"Caccia ai colori",mission:"Trova cinque tonalità naturali diverse senza raccogliere nulla. Descrivile o fotografale nel tuo taccuino."},
- {id:"basilica",name:"Basilica di San Paolo",subtitle:"Un luogo attraversato dai secoli",type:"Patrimonio",kind:"memory",route:"nature",icon:"✦",x:90,y:52,description:"La Basilica di San Paolo fuori le Mura è un riferimento storico, artistico e spirituale del territorio. Il suo paesaggio unisce memoria, architettura e comunità.",story:"Custodire un luogo significa riconoscerne il valore per persone anche molto diverse tra loro.",missionTitle:"Osserva il dettaglio",mission:"Individua un motivo geometrico o naturale nell'architettura e trasformalo in un piccolo pattern grafico."},
- {id:"tevere",name:"Parco Tevere Marconi",subtitle:"Il fiume come ecosistema",type:"Natura",kind:"nature",route:"nature",icon:"🌊",x:69,y:25,description:"Lungo il Tevere convivono acqua, vegetazione ripariale, uccelli e tracce della presenza umana. È un corridoio ecologico nel cuore della città.",story:"Il fiume non è solo uno sfondo: è un organismo vivo che collega territori e specie.",missionTitle:"Ascolta il paesaggio",mission:"Resta in silenzio per un minuto. Conta i suoni naturali e quelli prodotti dall'uomo, poi confrontali."}
+const species = [
+  {id:"borragine", name:"Borragine", latin:"Borago officinalis", icon:"🌿", category:"erbe", habitat:"prato", risk:"medio", use:"Uso alimentare tradizionale, solo con guida esperta.", season:"primavera", clues:"Fiori blu a stella, foglie ruvide, margini morbidi.", similar:"Da non confondere con piante spontanee non identificate.", note:"Buona per raccontare cucina locale, stagionalità e prudenza."},
+  {id:"sambuco", name:"Sambuco", latin:"Sambucus nigra", icon:"🌼", category:"erbe", habitat:"sentiero", risk:"medio", use:"Fiori usati tradizionalmente; parti della pianta richiedono cautela.", season:"primavera-estate", clues:"Ombrelle di piccoli fiori chiari, odore intenso, bacche scure a maturazione.", similar:"Specie simili e parti immature possono creare errori.", note:"Perfetto per schede su tisane, sciroppi e tradizioni."},
+  {id:"castagno", name:"Castagno", latin:"Castanea sativa", icon:"🌰", category:"alberi", habitat:"bosco", risk:"basso", use:"Castagne e cultura alimentare dei boschi locali.", season:"autunno", clues:"Foglie lanceolate seghettate, ricci spinosi, tronco scanalato.", similar:"Distinguere bene da ippocastano ornamentale.", note:"Collega biodiversità, economia rurale e passeggiate autunnali."},
+  {id:"porcino", name:"Porcino", latin:"Boletus edulis e gruppo", icon:"🍄", category:"funghi", habitat:"bosco", risk:"alto", use:"Informazione divulgativa: consumo solo dopo controllo micologico.", season:"autunno", clues:"Cappello bruno, tubuli sotto il cappello, gambo robusto.", similar:"Molti funghi richiedono verifica professionale.", note:"Scheda ad alto impatto, con disclaimer forte e regole di sicurezza."},
+  {id:"amanita", name:"Amanita falloide", latin:"Amanita phalloides", icon:"⚠️", category:"funghi", habitat:"bosco", risk:"alto", use:"Tossica mortale. Non raccogliere, non manipolare per consumo.", season:"estate-autunno", clues:"Cappello verdastro, lamelle bianche, volva alla base.", similar:"Può essere confusa da inesperti con specie commestibili.", note:"Essenziale per educazione alla prevenzione."},
+  {id:"istrice", name:"Istrice", latin:"Hystrix cristata", icon:"🦔", category:"fauna", habitat:"sentiero", risk:"basso", use:"Osservare tracce senza disturbare.", season:"tutto l'anno", clues:"Aculei caduti, impronte, scavi e passaggi notturni.", similar:"Tracce distinguibili da cinghiale e tasso.", note:"Porta la fauna nell'app senza bisogno di avvistamenti diretti."},
+  {id:"martin", name:"Martin pescatore", latin:"Alcedo atthis", icon:"🐦", category:"fauna", habitat:"lago", risk:"basso", use:"Osservazione fotografica rispettosa.", season:"tutto l'anno", clues:"Colori blu-arancio, volo rapido vicino all'acqua.", similar:"Può essere visto solo per pochi secondi.", note:"Ideale per Nemi e ambienti umidi."},
+  {id:"traccia", name:"Tracce di cinghiale", latin:"Sus scrofa", icon:"🐾", category:"tracce", habitat:"bosco", risk:"medio", use:"Riconoscere presenza e mantenere distanza.", season:"tutto l'anno", clues:"Terreno smosso, impronte doppie, fango e sentieri battuti.", similar:"Non avvicinarsi ad animali o piccoli.", note:"Trasforma la sicurezza outdoor in gioco educativo."}
 ];
 
-const state={route:"all",completed:new Set(JSON.parse(localStorage.getItem("custodi-completed")||"[]")),selected:null};
-const $=s=>document.querySelector(s);
-const els={markers:$("#map-markers"),next:$("#next-card"),visible:$("#visible-count"),dialog:$("#place-dialog"),headerProgress:$("#header-progress"),stampCount:$("#stamp-count"),stamps:$("#stamp-grid"),progressLabel:$("#progress-label"),progressLine:$("#progress-line"),custodian:$("#custodian-number"),toast:$("#toast")};
+const categories = [
+  ["all","Tutto"],["erbe","Erbe"],["funghi","Funghi"],["fauna","Fauna"],["tracce","Tracce"],["alberi","Alberi"]
+];
 
-function filtered(){return places.filter(p=>state.route==="all"||p.route===state.route)}
-function numberFor(id){return String(places.findIndex(p=>p.id===id)+1).padStart(2,"0")}
-function showToast(text){els.toast.textContent=text;els.toast.classList.add("show");clearTimeout(showToast.t);showToast.t=setTimeout(()=>els.toast.classList.remove("show"),2400)}
-function beep(freq=520){try{const a=new (window.AudioContext||window.webkitAudioContext)(),o=a.createOscillator(),g=a.createGain();o.frequency.value=freq;g.gain.setValueAtTime(.035,a.currentTime);g.gain.exponentialRampToValueAtTime(.001,a.currentTime+.12);o.connect(g).connect(a.destination);o.start();o.stop(a.currentTime+.12)}catch(e){}}
+const state = {
+  category:"all",
+  habitat:"all",
+  risk:"all",
+  selected:"borragine",
+  memory: JSON.parse(localStorage.getItem("custodi-ai-memory") || "[]"),
+  stamps: JSON.parse(localStorage.getItem("custodi-stamps") || "[]")
+};
 
-function renderMap(){
- const visible=filtered(); els.visible.textContent=`${visible.length} ${visible.length===1?"tappa":"tappe"}`;
- els.markers.innerHTML=places.map(p=>`<button class="map-marker ${p.kind} ${state.completed.has(p.id)?"completed":""} ${visible.includes(p)?"":"hidden"}" style="left:${p.x}%;top:${p.y}%" data-id="${p.id}" aria-label="Apri ${p.name}">${state.completed.has(p.id)?"✓":numberFor(p.id).replace(/^0/,"")}<span class="marker-label">${p.name}</span></button>`).join("");
- document.querySelectorAll(".map-marker:not(.hidden)").forEach(b=>{b.addEventListener("click",()=>openPlace(b.dataset.id));b.addEventListener("mouseenter",()=>renderNext(b.dataset.id))});
- renderNext((visible.find(p=>!state.completed.has(p.id))||visible[0]).id);
+const $ = (id) => document.getElementById(id);
+
+function save() {
+  localStorage.setItem("custodi-ai-memory", JSON.stringify(state.memory.slice(-12)));
+  localStorage.setItem("custodi-stamps", JSON.stringify(state.stamps));
+  $("memory-count").textContent = state.memory.length;
 }
-function renderNext(id){const p=places.find(x=>x.id===id);els.next.innerHTML=`<div class="place-number"><span>Prossima tappa</span><strong>${numberFor(p.id)}</strong></div><div class="place-icon">${p.icon}</div><h3>${p.name}</h3><p class="next-subtitle">${p.subtitle}</p><p>${p.description.slice(0,145)}…</p><button class="button button-sun" data-open="${p.id}">Scopri la tappa <span>→</span></button>`;els.next.querySelector("button").addEventListener("click",()=>openPlace(p.id))}
-function openPlace(id){const p=places.find(x=>x.id===id);state.selected=p;$("#dialog-index").textContent=`TAPPA ${numberFor(id)}`;$("#dialog-type").textContent=p.type;$("#dialog-name").textContent=p.name;$("#dialog-subtitle").textContent=p.subtitle;$("#dialog-description").textContent=p.description;$("#dialog-story").textContent=`“${p.story}”`;$("#mission-symbol").textContent=p.icon;$("#dialog-mission-title").textContent=p.missionTitle;$("#dialog-mission").textContent=p.mission;const done=state.completed.has(id),btn=$("#complete-mission");btn.disabled=done;btn.innerHTML=done?'Missione completata <span>✓</span>':'Completa missione <span>＋</span>';els.dialog.showModal();beep(430)}
-function completeMission(){if(!state.selected||state.completed.has(state.selected.id))return;state.completed.add(state.selected.id);localStorage.setItem("custodi-completed",JSON.stringify([...state.completed]));renderAll();const btn=$("#complete-mission");btn.disabled=true;btn.innerHTML='Missione completata <span>✓</span>';beep(760);showToast(`Timbro conquistato: ${state.selected.name}`);if(state.completed.size===places.length)setTimeout(()=>showToast("Passaporto completo: sei Custode del Territorio! ✦"),1000)}
-function renderPassport(){const n=state.completed.size,pct=Math.round(n/places.length*100);els.headerProgress.textContent=`${n}/${places.length}`;els.stampCount.textContent=`${n} ${n===1?"timbro":"timbri"}`;els.progressLabel.textContent=`${pct}%`;els.progressLine.style.width=`${pct}%`;els.custodian.textContent=n?String(1047+n*37).padStart(4,"0"):"----";els.stamps.innerHTML=places.map((p,i)=>`<div class="stamp ${state.completed.has(p.id)?"complete":""}" style="--tilt:${[-4,3,-2,5,2,-5,4,-3][i]}deg"><span>${state.completed.has(p.id)?p.icon:"·"}</span><strong>${state.completed.has(p.id)?p.name:"Da scoprire"}</strong></div>`).join("")}
-function renderAll(){renderMap();renderPassport()}
 
-document.querySelectorAll(".route-tab").forEach(tab=>tab.addEventListener("click",()=>{document.querySelectorAll(".route-tab").forEach(t=>{t.classList.remove("active");t.setAttribute("aria-selected","false")});tab.classList.add("active");tab.setAttribute("aria-selected","true");state.route=tab.dataset.route;renderMap();beep(500)}));
-$("#close-dialog").addEventListener("click",()=>els.dialog.close());els.dialog.addEventListener("click",e=>{if(e.target===els.dialog)els.dialog.close()});$("#complete-mission").addEventListener("click",completeMission);
-const intro=$("#intro-dialog");$("#open-intro").addEventListener("click",()=>intro.showModal());$("#close-intro").addEventListener("click",()=>intro.close());$("#intro-start").addEventListener("click",()=>{intro.close();$("#esplora").scrollIntoView({behavior:"smooth"})});intro.addEventListener("click",e=>{if(e.target===intro)intro.close()});
-$("#passport-mini").addEventListener("click",()=>$("#missioni").scrollIntoView({behavior:"smooth"}));$("#reset-progress").addEventListener("click",()=>{if(!confirm("Vuoi cancellare tutti i timbri e ricominciare?"))return;state.completed.clear();localStorage.removeItem("custodi-completed");renderAll();showToast("Passaporto azzerato")});
+function toast(text) {
+  const el = $("toast");
+  el.textContent = text;
+  el.classList.add("show");
+  setTimeout(() => el.classList.remove("show"), 2200);
+}
+
+function renderChips() {
+  $("category-chips").innerHTML = categories.map(([id,label]) =>
+    `<button class="chip ${state.category===id?"active":""}" data-category="${id}">${label}</button>`
+  ).join("");
+  document.querySelectorAll("[data-category]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      state.category = btn.dataset.category;
+      renderAll();
+    });
+  });
+}
+
+function filteredSpecies() {
+  return species.filter(s =>
+    (state.category === "all" || s.category === state.category) &&
+    (state.habitat === "all" || s.habitat === state.habitat) &&
+    (state.risk === "all" || s.risk === state.risk)
+  );
+}
+
+function renderSpeciesList() {
+  const list = filteredSpecies();
+  if (!list.find(s => s.id === state.selected) && list.length) state.selected = list[0].id;
+  $("species-list").innerHTML = list.map(s =>
+    `<button class="species-button ${state.selected===s.id?"active":""}" data-id="${s.id}">
+      <strong>${s.icon} ${s.name}</strong><span>${s.latin} · rischio ${s.risk}</span>
+    </button>`
+  ).join("") || "<p>Nessuna specie compatibile con i filtri.</p>";
+  document.querySelectorAll("[data-id]").forEach(btn => btn.addEventListener("click", () => {
+    state.selected = btn.dataset.id;
+    renderSpeciesCard();
+    renderScanCard();
+  }));
+}
+
+function renderSpeciesCard() {
+  const s = species.find(item => item.id === state.selected) || species[0];
+  $("species-card").innerHTML = `
+    <div class="species-top">
+      <div><p class="eyebrow">Scheda validabile</p><h3>${s.name}</h3><p class="latin">${s.latin}</p></div>
+      <div class="species-icon">${s.icon}</div>
+    </div>
+    <div class="tag-row">
+      <span class="tag">${s.category}</span><span class="tag">${s.habitat}</span><span class="tag">${s.season}</span><span class="tag risk-${s.risk}">attenzione ${s.risk}</span>
+    </div>
+    <div class="species-grid">
+      <div class="mini-card"><strong>Come riconoscerla</strong><p>${s.clues}</p></div>
+      <div class="mini-card"><strong>Uso e cultura</strong><p>${s.use}</p></div>
+      <div class="mini-card"><strong>Da non sbagliare</strong><p>${s.similar}</p></div>
+    </div>
+    <div class="mini-card" style="margin-top:20px"><strong>Nota per il racconto territoriale</strong><p>${s.note}</p></div>
+  `;
+}
+
+function renderScanCard() {
+  const s = species.find(item => item.id === state.selected) || filteredSpecies()[0] || species[0];
+  $("scan-card").innerHTML = `<small>possibile corrispondenza locale</small><strong>${s.icon} ${s.name}</strong><span>${s.clues}</span>`;
+}
+
+function answer(question) {
+  const q = question.toLowerCase();
+  const found = species.find(s => q.includes(s.name.toLowerCase().split(" ")[0]) || q.includes(s.category));
+  if (q.includes("commest") || q.includes("mang") || q.includes("cucina")) {
+    return "Posso indicare usi tradizionali, ma non autorizzo il consumo. Per funghi, bacche ed erbe spontanee serve sempre verifica di un esperto o micologo. Nell'app definitiva questa risposta può essere validata con Le Erbe della Luna.";
+  }
+  if (q.includes("officinal") || q.includes("tisane") || q.includes("erbe")) {
+    return "La scheda officinale deve restare divulgativa: nome, tradizione locale, periodo, parti usate e controindicazioni generali. Eviterei dosaggi o consigli terapeutici, perché alzano responsabilità e richiedono validazione professionale.";
+  }
+  if (q.includes("foto") || q.includes("scanner") || q.includes("lens")) {
+    return "Nel perimetro minimo lo scanner è guidato: foto locale più domande e filtri. Il riconoscimento AI automatico vero è fase 2, perché richiede API, dataset, test e gestione degli errori.";
+  }
+  if (found) {
+    return `${found.name}: ${found.clues} Uso: ${found.use} Attenzione: ${found.similar}`;
+  }
+  if (q.includes("nemi") || q.includes("luna")) {
+    return "La collaborazione con Le Erbe della Luna può dare autorevolezza: validazione schede, laboratori, contenuti su erbe officinali e fiori commestibili, percorsi stagionali a Nemi.";
+  }
+  return "Io partirei da tre domande: cosa hai visto, dove lo hai visto e in che stagione. L'app restringe il campo alle specie dei Castelli Romani e mostra sempre livello di attenzione, specie simili e cosa non fare.";
+}
+
+function renderChat() {
+  const initial = state.memory.length ? "" : `<div class="msg bot">Ciao, sono il bot IA locale di Alessandro Calabrò. Posso aiutarti a orientarti tra erbe, funghi, fauna e tracce dei Castelli Romani.</div>`;
+  $("chat-log").innerHTML = initial + state.memory.map(m => `<div class="msg ${m.role}">${m.text}</div>`).join("");
+  $("chat-log").scrollTop = $("chat-log").scrollHeight;
+  $("quick-prompts").innerHTML = ["È commestibile?","Come funziona lo scanner?","Cosa fare con un fungo?","Ruolo di Le Erbe della Luna"].map(t => `<button type="button">${t}</button>`).join("");
+  document.querySelectorAll(".quick-prompts button").forEach(btn => btn.addEventListener("click", () => ask(btn.textContent)));
+}
+
+function ask(text) {
+  if (!text.trim()) return;
+  state.memory.push({role:"user", text});
+  state.memory.push({role:"bot", text:answer(text)});
+  save();
+  renderChat();
+}
+
+function renderStamps() {
+  const missions = ["Osserva senza raccogliere","Riconosci un habitat","Trova una traccia","Confronta specie simili","Segna la stagione","Rispetta un divieto","Fai una domanda al bot","Valida con esperto"];
+  $("stamp-board").innerHTML = missions.map((m,i) => `<button class="stamp ${state.stamps.includes(i)?"done":""}" style="--tilt:${i%2?'-3deg':'2deg'}" data-stamp="${i}">${m}</button>`).join("");
+  document.querySelectorAll("[data-stamp]").forEach(btn => btn.addEventListener("click", () => {
+    const id = Number(btn.dataset.stamp);
+    state.stamps = state.stamps.includes(id) ? state.stamps.filter(x => x !== id) : [...state.stamps, id];
+    save();
+    renderStamps();
+  }));
+}
+
+function renderMemory() {
+  $("memory-items").innerHTML = state.memory.length ? state.memory.map((m,i) => `<div class="memory-item"><strong>${i+1}. ${m.role === "bot" ? "Bot" : "Tu"}</strong><span>${m.text}</span></div>`).join("") : "<p>Nessuna memoria salvata.</p>";
+}
+
+function renderAll() {
+  renderChips();
+  renderSpeciesList();
+  renderSpeciesCard();
+  renderScanCard();
+  renderStamps();
+  renderChat();
+  save();
+}
+
+$("habitat-filter").addEventListener("change", e => { state.habitat = e.target.value; renderAll(); });
+$("risk-filter").addEventListener("change", e => { state.risk = e.target.value; renderAll(); });
+$("guided-id").addEventListener("click", () => {
+  const list = filteredSpecies();
+  if (list.length) state.selected = list[Math.floor(Math.random() * list.length)].id;
+  renderAll();
+  toast("Riconoscimento guidato aggiornato");
+});
+$("photo-input").addEventListener("change", e => {
+  const file = e.target.files[0];
+  $("file-label").textContent = file ? `${file.name} analizzata solo in locale` : "Nessuna immagine salvata online.";
+  toast("Foto caricata in locale");
+});
+$("chat-form").addEventListener("submit", e => {
+  e.preventDefault();
+  const input = $("chat-input");
+  ask(input.value);
+  input.value = "";
+});
+$("open-memory").addEventListener("click", () => { renderMemory(); $("memory-dialog").showModal(); });
+$("close-memory").addEventListener("click", () => $("memory-dialog").close());
+$("clear-memory").addEventListener("click", () => { state.memory = []; save(); renderChat(); renderMemory(); });
+
 renderAll();
