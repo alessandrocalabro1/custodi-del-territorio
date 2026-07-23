@@ -3,99 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0f2a22" />
-  <meta name="description" content="Custodi dei Castelli Romani: atlante naturalistico locale con scanner guidato, schede, bot IA dimostrativo e passaporto." />
+  <meta name="theme-color" content="#071812" />
+  <meta name="description" content="Custodi dei Castelli Romani: scanner naturalistico guidato, atlante locale, assistente IA dimostrativo e passaporto per scuole, famiglie e turismo lento." />
   <title>Custodi dei Castelli Romani</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
   <header class="topbar">
     <a class="brand" href="#home" aria-label="Torna all'inizio">
       <span class="brand-mark">C</span>
-      <span><strong>Custodi</strong><small>dei Castelli Romani</small></span>
+      <span>
+        <strong>Custodi</strong>
+        <small>dei Castelli Romani</small>
+      </span>
     </a>
     <nav aria-label="Navigazione principale">
       <a href="#scanner">Scanner</a>
       <a href="#atlante">Atlante</a>
-      <a href="#assistente">Bot IA</a>
+      <a href="#assistente">Assistente</a>
+      <a href="#esperienze">Esperienze</a>
       <a href="#preventivo">Preventivo</a>
     </nav>
-    <button class="icon-button" id="open-memory" aria-label="Apri memoria locale">
+    <button class="memory-pill" id="open-memory" type="button" aria-label="Apri memoria locale">
       <span id="memory-count">0</span>
+      <small>memoria</small>
     </button>
   </header>
 
   <main>
     <section class="hero" id="home">
-      <img src="assets/hero-castelli-romani.png" alt="Bosco dei Castelli Romani con smartphone che riconosce specie naturali" />
-      <div class="hero-overlay"></div>
-      <div class="hero-copy">
-        <p class="eyebrow">Concept e direzione Alessandro Calabrò</p>
+      <img class="hero-bg" src="assets/hero-castelli-romani.png" alt="Bosco dei Castelli Romani con atmosfera naturalistica" />
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <p class="eyebrow">Atlante locale · scanner guidato · zero backend</p>
         <h1>Il bosco risponde.</h1>
-        <p>Un atlante digitale dei Castelli Romani per riconoscere piante, funghi, fauna e tracce con un'esperienza ispirata a Google Lens, ma sicura, locale e validata da esperti.</p>
+        <p class="hero-lead">Una web app spettacolare per far scoprire piante, funghi, fauna e tracce dei Castelli Romani con un'esperienza ispirata a Google Lens, ma sicura, locale e sostenibile.</p>
         <div class="hero-actions">
           <a class="primary" href="#scanner">Prova lo scanner</a>
-          <a class="secondary" href="#assistente">Chiedi al bot IA</a>
+          <a class="secondary" href="#assistente">Apri l'assistente</a>
         </div>
       </div>
-      <aside class="hero-panel" aria-label="Stato prototipo">
-        <strong>50</strong>
-        <span>specie iniziali previste</span>
-        <strong>0</strong>
-        <span>backend, account, profilazione</span>
+      <aside class="hero-dashboard" aria-label="Punti forti del prototipo">
+        <div><strong>50</strong><span>schede iniziali previste</span></div>
+        <div><strong>0</strong><span>account, backend, profilazione</span></div>
+        <div><strong>3</strong><span>pubblici: scuole, famiglie, turismo</span></div>
       </aside>
     </section>
 
-    <section class="scanner" id="scanner">
+    <section class="scanner-section" id="scanner">
       <div class="section-head">
-        <p class="eyebrow">Riconoscimento locale</p>
-        <h2>Uno scanner che orienta, non sostituisce l'esperto.</h2>
-        <p>La demo combina caricamento foto, filtri e domande guidate. Il riconoscimento automatico vero può arrivare in fase 2; qui la resa è alta senza server e senza costi ricorrenti.</p>
+        <p class="eyebrow">Riconoscimento dimostrativo</p>
+        <h2>Uno scanner guidato che sembra magia, ma resta prudente.</h2>
+        <p>Il prototipo non promette identificazioni certe: combina filtri, habitat, stagioni e schede locali per orientare l'utente, mostrando sempre rischi e verifica esperta.</p>
       </div>
+
       <div class="scanner-grid">
-        <div class="phone">
-          <div class="phone-camera"></div>
-          <div class="scan-view">
-            <img src="assets/hero-castelli-romani.png" alt="" />
-            <div class="scan-frame"></div>
-            <div class="scan-card" id="scan-card">
-              <small>possibile corrispondenza</small>
-              <strong>Seleziona categoria</strong>
-              <span>Lo scanner proporrà specie locali compatibili.</span>
+        <div class="phone-shell">
+          <div class="phone-notch"></div>
+          <div class="scan-stage">
+            <img id="scan-image" src="assets/hero-castelli-romani.png" alt="" />
+            <div class="scan-vignette"></div>
+            <div class="scan-target">
+              <span></span><span></span><span></span><span></span>
             </div>
+            <div class="scan-beam"></div>
+            <article class="live-result" id="live-result"></article>
           </div>
         </div>
-        <div class="scanner-controls">
-          <div class="upload-box">
+
+        <div class="control-panel">
+          <div class="upload-card">
             <input type="file" id="photo-input" accept="image/*" />
-            <label for="photo-input">Carica una foto dimostrativa</label>
-            <span id="file-label">Nessuna immagine salvata online.</span>
+            <label for="photo-input">
+              <strong>Carica una foto locale</strong>
+              <span id="file-label">La foto resta solo nel browser.</span>
+            </label>
           </div>
-          <div class="chips" id="category-chips" aria-label="Categorie"></div>
-          <div class="filters">
+
+          <div class="controls-row">
+            <label>Categoria
+              <select id="category-filter"></select>
+            </label>
             <label>Ambiente
-              <select id="habitat-filter">
-                <option value="all">Tutti</option>
-                <option value="bosco">Bosco</option>
-                <option value="lago">Lago</option>
-                <option value="prato">Prato</option>
-                <option value="sentiero">Sentiero</option>
-              </select>
+              <select id="habitat-filter"></select>
             </label>
-            <label>Livello attenzione
-              <select id="risk-filter">
-                <option value="all">Tutti</option>
-                <option value="basso">Basso</option>
-                <option value="medio">Medio</option>
-                <option value="alto">Alto</option>
-              </select>
+            <label>Attenzione
+              <select id="risk-filter"></select>
             </label>
           </div>
-          <button class="primary wide" id="guided-id">Avvia riconoscimento guidato</button>
-          <p class="warning">Il prototipo non autorizza raccolta o consumo. Funghi, bacche ed erbe spontanee richiedono verifica esperta.</p>
+
+          <button class="primary wide" id="guided-id" type="button">Avvia scansione guidata</button>
+
+          <div class="candidate-stack" id="candidate-stack" aria-live="polite"></div>
+
+          <p class="safety-note">Regola di progetto: l'app educa e orienta, non autorizza raccolta o consumo. Funghi, bacche ed erbe spontanee richiedono verifica esperta.</p>
         </div>
       </div>
     </section>
@@ -103,61 +110,91 @@
     <section class="atlas" id="atlante">
       <div class="section-head compact">
         <p class="eyebrow">Atlante vivo</p>
-        <h2>Specie locali, rischi e usi tradizionali in una sola scheda.</h2>
+        <h2>Schede locali belle da guardare e utili sul campo.</h2>
+      </div>
+      <div class="atlas-tools">
+        <input id="search-input" type="search" placeholder="Cerca specie, habitat, uso o rischio..." />
+        <div class="mini-stats" id="atlas-stats"></div>
       </div>
       <div class="atlas-layout">
-        <aside class="atlas-menu" id="species-list"></aside>
-        <article class="species-card" id="species-card"></article>
+        <aside class="species-list" id="species-list"></aside>
+        <article class="species-detail" id="species-detail"></article>
       </div>
     </section>
 
     <section class="assistant-section" id="assistente">
       <div class="assistant-copy">
-        <p class="eyebrow">Bot IA locale</p>
-        <h2>Un assistente che fa scena, resta leggero e non manda dati fuori.</h2>
-        <p>Il bot usa una base di risposte salvata nell'app e memorizza solo la cronologia nel browser. In demo sembra intelligente perché interpreta parole chiave, specie e bisogni reali.</p>
+        <p class="eyebrow">Assistente IA locale</p>
+        <h2>Risposte scenografiche, memoria locale, nessun dato inviato fuori.</h2>
+        <p>Non è un chatbot remoto: è un motore dimostrativo con risposte curate, parole chiave, memoria nel browser e tono da guida naturalistica. Fa colpo senza costi ricorrenti.</p>
         <div class="expert-box">
-          <strong>Partner contenuti</strong>
-          <span>Possibile collaborazione con Le Erbe della Luna, realtà di Nemi specializzata in erbe officinali e fiori commestibili.</span>
+          <strong>Validazione esperta</strong>
+          <span>Le schede più sensibili possono essere validate da realtà locali come Le Erbe della Luna, soprattutto su erbe officinali, fiori commestibili e sicurezza.</span>
         </div>
       </div>
       <div class="chat">
         <div class="chat-log" id="chat-log" aria-live="polite"></div>
         <div class="quick-prompts" id="quick-prompts"></div>
         <form id="chat-form">
-          <input id="chat-input" autocomplete="off" placeholder="Chiedi: questa specie è commestibile?" />
+          <input id="chat-input" autocomplete="off" placeholder="Chiedi: posso mangiarla? che traccia è? cosa faccio ora?" />
           <button class="primary" type="submit">Invia</button>
         </form>
       </div>
     </section>
 
-    <section class="passport" id="passaporto">
-      <div>
-        <p class="eyebrow">Esperienza scuola e famiglie</p>
-        <h2>Ogni osservazione diventa un timbro.</h2>
-        <p>Il passaporto naturalistico premia osservazioni corrette: fotografare senza raccogliere, riconoscere habitat, distinguere specie simili, rispettare regole e stagioni.</p>
+    <section class="experiences" id="esperienze">
+      <div class="section-head">
+        <p class="eyebrow">Esperienze sul territorio</p>
+        <h2>Da semplice app a strumento per scuole, famiglie e turismo lento.</h2>
+        <p>Ogni interazione può diventare una micro-missione: osservare senza raccogliere, riconoscere un habitat, confrontare specie simili, completare un percorso stagionale.</p>
+      </div>
+      <div class="experience-grid">
+        <article>
+          <span>01</span>
+          <h3>Percorsi stagionali</h3>
+          <p>Primavera per fiori ed erbe, autunno per castagni e funghi, estate per tracce e fauna notturna.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Passaporto naturalistico</h3>
+          <p>Timbri locali, missioni educative e progressi salvati solo sul dispositivo.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Partner autorevoli</h3>
+          <p>Contenuti validabili da guide, associazioni e competenze locali senza costruire una piattaforma complessa.</p>
+        </article>
+      </div>
+      <div class="passport-card">
+        <div>
+          <p class="eyebrow">Passaporto</p>
+          <h3 id="passport-title">0 missioni completate</h3>
+          <p id="passport-copy">Completa le missioni per sbloccare il profilo da custode del territorio.</p>
+        </div>
+        <div class="progress-ring" id="progress-ring"><span>0%</span></div>
       </div>
       <div class="stamp-board" id="stamp-board"></div>
     </section>
 
     <section class="budget" id="preventivo">
       <div class="budget-card">
-        <p class="eyebrow">Preventivo ufficiale</p>
-        <h2>Proposta completa: Euro 4.900 lordi.</h2>
-        <p>Realizzazione occasionale e una tantum dell'applicativo web statico “Custodi dei Castelli Romani”, ideato e curato da Alessandro Calabrò.</p>
+        <p class="eyebrow">Proposta sostenibile</p>
+        <h2>Massimo impatto, minimo costo ricorrente.</h2>
+        <p>Applicativo web statico “Custodi dei Castelli Romani”: demo premium, codice sorgente consegnabile, pubblicazione su GitHub Pages e contenuti iniziali ampliabili.</p>
         <ul>
-          <li>UX/UI, sviluppo, atlante iniziale e scanner guidato</li>
-          <li>Bot IA dimostrativo con memoria locale</li>
-          <li>Pubblicazione GitHub Pages e consegna codice sorgente</li>
-          <li>60 giorni di garanzia correttiva</li>
+          <li>UX/UI scenografica mobile-first</li>
+          <li>Scanner guidato con risultati multipli e sicurezza</li>
+          <li>Atlante locale espandibile</li>
+          <li>Assistente locale con memoria nel browser</li>
+          <li>Passaporto naturalistico e micro-missioni</li>
         </ul>
       </div>
       <div class="budget-side">
-        <strong>Costi vivi annui stimati</strong>
-        <span>GitHub Pages pubblico: Euro 0</span>
+        <strong>Euro 4.900 lordi</strong>
+        <span>GitHub Pages pubblico: Euro 0/anno</span>
         <span>Dominio .it: circa Euro 11,99 + IVA/anno</span>
         <span>Dominio con email base: circa Euro 16,49 + IVA/anno</span>
-        <small>Dominio e servizi esterni restano intestati al cliente e non sono inclusi nel compenso.</small>
+        <small>Dominio e servizi esterni restano intestati al cliente. Nessun database, account o profilazione.</small>
       </div>
     </section>
   </main>
@@ -165,9 +202,9 @@
   <dialog id="memory-dialog">
     <button class="close" id="close-memory" aria-label="Chiudi">×</button>
     <h2>Memoria locale</h2>
-    <p>Queste note restano nel browser e simulano la memoria del bot senza account e senza backend.</p>
+    <p>Conversazioni e timbri restano nel browser. Non vengono inviati a server esterni.</p>
     <div id="memory-items"></div>
-    <button class="secondary dark" id="clear-memory">Svuota memoria</button>
+    <button class="secondary dark" id="clear-memory" type="button">Svuota memoria</button>
   </dialog>
 
   <div class="toast" id="toast"></div>
