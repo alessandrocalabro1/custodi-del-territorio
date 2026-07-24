@@ -1,37 +1,30 @@
 # Custodi dei Castelli Romani
 
-Applicativo web statico premium per esplorare la biodiversità dei Castelli Romani attraverso scanner guidato, atlante naturalistico, assistente locale e passaporto di missioni.
-
-## Principio
-
-Massimo impatto visivo, minimo costo ricorrente:
-
-- nessun backend;
-- nessun database;
-- nessun account;
-- nessuna profilazione;
-- pubblicazione su GitHub Pages;
-- memoria solo nel browser dell'utente.
+Una web app responsive per osservare, conoscere e rispettare la biodiversità dei Castelli Romani.
 
 ## Funzioni
 
-- Hero scenografica mobile-first.
-- Scanner guidato con ipotesi multiple e percentuale di compatibilità.
-- Caricamento foto locale senza upload.
-- Atlante con ricerca, filtri, schede e livello di attenzione.
-- Assistente naturalistico locale con risposte curate e memoria nel browser.
-- Passaporto naturalistico con missioni e avanzamento.
-- Sezione esperienze per scuole, famiglie e turismo lento.
-- Preventivo e costi vivi esposti nella pagina.
+- Identificazione tramite confronto di categoria, ambiente, stagione e caratteristica osservata.
+- Atlante con 50 schede, ricerca estesa, filtri combinabili, ordinamento e navigazione.
+- Schede con nome scientifico, habitat, stagionalità, elementi distintivi, ruolo ecologico, specie simili, modalità di osservazione, comportamento consigliato e fonte editoriale.
+- Preferiti, cronologia delle schede e taccuino personale.
+- Tre percorsi tematici avviabili, completabili e ripetibili.
+- Passaporto naturalistico con missioni, progressi e attività collegate.
+- Assistente naturalistico locale con 50 schede e una base di approfondimenti su habitat, stagioni, ecologia, osservazione, sicurezza, fonti e percorsi.
+- Memoria del contesto, tolleranza ai refusi, risposte composte dai dati dell’app e azioni verso Atlante, Identifica e Percorsi.
+- Gestione dei dati personali con cancellazione completa e conferma.
+- Navigazione desktop e mobile, focus visibile e supporto alla riduzione delle animazioni.
 
-## File
+## Identificazione e sicurezza
 
-- `index.html`: struttura dell'app.
-- `styles.css`: layout, responsive design e animazioni.
-- `app.js`: dati dimostrativi, interazioni, scanner, assistente e stato locale.
-- `assets/hero-castelli-romani.png`: immagine principale.
-- `.github/workflows/pages.yml`: deploy GitHub Pages tramite Actions.
+Il confronto utilizza esclusivamente i criteri selezionati dall’utente. L’applicazione non richiede fotografie e non effettua riconoscimento visuale.
 
-## Sicurezza e contenuti
+Le informazioni hanno finalità naturalistica e divulgativa. Funghi, bacche, erbe e altre specie non devono essere consumati o utilizzati sulla base del solo risultato dell’applicazione.
 
-Il prototipo non autorizza raccolta o consumo di specie naturali. Funghi, bacche ed erbe spontanee richiedono verifica esperta o micologica. L'assistente è dimostrativo e non invia dati a server esterni.
+## Dati
+
+Preferiti, osservazioni, progressi, percorsi e conversazioni vengono conservati sul dispositivo utilizzato. L’applicazione permette di azzerare tutti i dati personali tramite una conferma esplicita.
+
+## Contenuti
+
+I contenuti sono organizzati per essere consultati da cittadini, scuole, famiglie, visitatori e appassionati di natura. Il progetto valorizza il contributo di guide, scuole, associazioni ed esperti del territorio.

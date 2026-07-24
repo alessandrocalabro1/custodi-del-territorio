@@ -4,214 +4,351 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#071812" />
-  <meta name="description" content="Custodi dei Castelli Romani: scanner naturalistico guidato, atlante locale, assistente IA dimostrativo e passaporto per scuole, famiglie e turismo lento." />
+  <meta name="description" content="Custodi dei Castelli Romani: osserva, conosci e rispetta piante, funghi, animali e tracce del territorio." />
+  <meta name="robots" content="index,follow" />
   <title>Custodi dei Castelli Romani</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20260724-knowledge50" />
 </head>
 <body>
-  <div class="ambient ambient-one"></div>
-  <div class="ambient ambient-two"></div>
+  <a class="skip-link" href="#contenuto">Vai al contenuto</a>
 
   <header class="topbar">
-    <a class="brand" href="#home" aria-label="Torna all'inizio">
-      <span class="brand-mark">C</span>
+    <a class="brand" href="#home" aria-label="Custodi dei Castelli Romani, torna alla home">
+      <span class="brand-mark" aria-hidden="true">C</span>
       <span>
         <strong>Custodi</strong>
         <small>dei Castelli Romani</small>
       </span>
     </a>
-    <nav aria-label="Navigazione principale">
-      <a href="#scanner">Scanner</a>
-      <a href="#atlante">Atlante</a>
-      <a href="#assistente">Assistente</a>
-      <a href="#esperienze">Esperienze</a>
-      <a href="#preventivo">Preventivo</a>
-    </nav>
-    <button class="memory-pill" id="open-memory" type="button" aria-label="Apri memoria locale">
-      <span id="memory-count">0</span>
-      <small>memoria</small>
+
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+      <span aria-hidden="true">☰</span>
+      <span>Menu</span>
     </button>
+
+    <nav id="main-nav" aria-label="Navigazione principale">
+      <a href="#home">Home</a>
+      <a href="#identifica">Identifica</a>
+      <a href="#atlante">Atlante</a>
+      <a href="#percorsi">Percorsi</a>
+      <a href="#passaporto">Passaporto</a>
+      <a href="#guida">Guida</a>
+      <a href="#progetto">Il progetto</a>
+    </nav>
+
+    <a class="utility-button" href="#passaporto" aria-label="Apri il mio passaporto">
+      <span aria-hidden="true">⌁</span>
+      <small>Il mio passaporto</small>
+    </a>
   </header>
 
-  <main>
+  <main id="contenuto">
     <section class="hero" id="home">
-      <img class="hero-bg" src="assets/hero-castelli-romani.png" alt="Bosco dei Castelli Romani con atmosfera naturalistica" />
-      <div class="hero-shade"></div>
+      <img class="hero-bg" src="assets/hero-castelli-romani.png" alt="Bosco e lago nel paesaggio dei Castelli Romani" />
+      <div class="hero-shade" aria-hidden="true"></div>
       <div class="hero-content">
-        <p class="eyebrow">Atlante locale · scanner guidato · zero backend</p>
-        <h1>Il bosco risponde.</h1>
-        <p class="hero-lead">Una web app spettacolare per far scoprire piante, funghi, fauna e tracce dei Castelli Romani con un'esperienza ispirata a Google Lens, ma sicura, locale e sostenibile.</p>
+        <p class="eyebrow">Custodi dei Castelli Romani</p>
+        <h1>Scopri la natura dei Castelli Romani.</h1>
+        <p class="hero-lead">Osserva piante, funghi, animali e tracce del territorio. Esplora 50 schede approfondite, segui i percorsi e conserva le tue scoperte nel passaporto naturalistico.</p>
         <div class="hero-actions">
-          <a class="primary" href="#scanner">Prova lo scanner</a>
-          <a class="secondary" href="#assistente">Apri l'assistente</a>
+          <a class="primary" href="#identifica">Inizia a esplorare</a>
+          <a class="secondary" href="#atlante">Apri l’atlante</a>
+          <a class="secondary" href="#percorsi">Scegli un percorso</a>
         </div>
       </div>
-      <aside class="hero-dashboard" aria-label="Punti forti del prototipo">
-        <div><strong>50</strong><span>schede iniziali previste</span></div>
-        <div><strong>0</strong><span>account, backend, profilazione</span></div>
-        <div><strong>3</strong><span>pubblici: scuole, famiglie, turismo</span></div>
-      </aside>
+      <div class="home-shortcuts" aria-label="Funzioni principali">
+        <a href="#identifica"><strong>Identifica</strong><span>Confronta ciò che hai osservato</span></a>
+        <a href="#atlante"><strong>Atlante</strong><span>Consulta specie, habitat e stagioni</span></a>
+        <a href="#passaporto"><strong>Passaporto</strong><span>Ritrova attività e scoperte</span></a>
+      </div>
     </section>
 
-    <section class="scanner-section" id="scanner">
+    <section class="identify-section" id="identifica">
       <div class="section-head">
-        <p class="eyebrow">Riconoscimento dimostrativo</p>
-        <h2>Uno scanner guidato che sembra magia, ma resta prudente.</h2>
-        <p>Il prototipo non promette identificazioni certe: combina filtri, habitat, stagioni e schede locali per orientare l'utente, mostrando sempre rischi e verifica esperta.</p>
+        <div>
+          <p class="eyebrow">Identifica un’osservazione</p>
+          <h2>Confronta ciò che hai incontrato.</h2>
+        </div>
+        <p>Descrivi ciò che hai osservato attraverso caratteristiche semplici. L’app confronterà le informazioni con le specie presenti nell’Atlante e proporrà i risultati più compatibili.</p>
       </div>
 
-      <div class="scanner-grid">
-        <div class="phone-shell">
-          <div class="phone-notch"></div>
-          <div class="scan-stage">
-            <img id="scan-image" src="assets/hero-castelli-romani.png" alt="" />
-            <div class="scan-vignette"></div>
-            <div class="scan-target">
-              <span></span><span></span><span></span><span></span>
-            </div>
-            <div class="scan-beam"></div>
-            <article class="live-result" id="live-result"></article>
+      <div class="identify-layout">
+        <aside class="identify-guide" aria-label="Come funziona l’identificazione guidata">
+          <p class="eyebrow">Tre passaggi</p>
+          <h3>Osserva più indizi, non un solo dettaglio.</h3>
+          <ol class="identify-steps">
+            <li>
+              <span>01</span>
+              <div><strong>Guarda l’ambiente</strong><small>Bosco, lago, prato o sentiero.</small></div>
+            </li>
+            <li>
+              <span>02</span>
+              <div><strong>Segna la stagione</strong><small>Il periodo aiuta a restringere il confronto.</small></div>
+            </li>
+            <li>
+              <span>03</span>
+              <div><strong>Confronta i caratteri</strong><small>Forma, foglie, fiori, tracce o piumaggio.</small></div>
+            </li>
+          </ol>
+          <div class="identify-guide-note">
+            <strong>Risultato orientativo</strong>
+            <p>Il confronto usa esclusivamente i criteri selezionati e le schede dell’Atlante locale.</p>
           </div>
-        </div>
+        </aside>
 
-        <div class="control-panel">
-          <div class="upload-card">
-            <input type="file" id="photo-input" accept="image/*" />
-            <label for="photo-input">
-              <strong>Carica una foto locale</strong>
-              <span id="file-label">La foto resta solo nel browser.</span>
-            </label>
+        <form class="identify-panel" id="identification-form" novalidate>
+          <div class="identify-panel-intro">
+            <span aria-hidden="true">⌁</span>
+            <div>
+              <strong>Descrivi la tua osservazione</strong>
+              <small>Scegli almeno due criteri; più indizi selezioni, più utile sarà il confronto.</small>
+            </div>
           </div>
 
           <div class="controls-row">
             <label>Categoria
-              <select id="category-filter"></select>
+              <select id="identify-category"></select>
             </label>
             <label>Ambiente
-              <select id="habitat-filter"></select>
+              <select id="identify-habitat"></select>
             </label>
-            <label>Attenzione
-              <select id="risk-filter"></select>
+            <label>Stagione
+              <select id="identify-season"></select>
+            </label>
+            <label>Caratteristica
+              <select id="identify-trait"></select>
             </label>
           </div>
 
-          <button class="primary wide" id="guided-id" type="button">Avvia scansione guidata</button>
+          <p class="form-help">L’identificazione confronta categoria, ambiente, stagione e caratteristiche selezionate. Nessuna fotografia viene richiesta o analizzata.</p>
+          <p class="form-feedback" id="identification-feedback" role="alert"></p>
 
-          <div class="candidate-stack" id="candidate-stack" aria-live="polite"></div>
+          <div class="form-actions">
+            <button class="primary" type="submit">Confronta con l’Atlante</button>
+            <button class="text-button" id="reset-identification" type="button">Ricomincia</button>
+          </div>
 
-          <p class="safety-note">Regola di progetto: l'app educa e orienta, non autorizza raccolta o consumo. Funghi, bacche ed erbe spontanee richiedono verifica esperta.</p>
-        </div>
-      </div>
-    </section>
+          <div class="identification-results" id="identification-results" aria-live="polite">
+            <div class="empty-prompt">
+              <strong>Pronto per il confronto</strong>
+              <span>Seleziona i criteri che descrivono meglio la tua osservazione.</span>
+            </div>
+          </div>
 
-    <section class="atlas" id="atlante">
-      <div class="section-head compact">
-        <p class="eyebrow">Atlante vivo</p>
-        <h2>Schede locali belle da guardare e utili sul campo.</h2>
-      </div>
-      <div class="atlas-tools">
-        <input id="search-input" type="search" placeholder="Cerca specie, habitat, uso o rischio..." />
-        <div class="mini-stats" id="atlas-stats"></div>
-      </div>
-      <div class="atlas-layout">
-        <aside class="species-list" id="species-list"></aside>
-        <article class="species-detail" id="species-detail"></article>
-      </div>
-    </section>
-
-    <section class="assistant-section" id="assistente">
-      <div class="assistant-copy">
-        <p class="eyebrow">Assistente IA locale</p>
-        <h2>Risposte scenografiche, memoria locale, nessun dato inviato fuori.</h2>
-        <p>Non è un chatbot remoto: è un motore dimostrativo con risposte curate, parole chiave, memoria nel browser e tono da guida naturalistica. Fa colpo senza costi ricorrenti.</p>
-        <div class="expert-box">
-          <strong>Validazione esperta</strong>
-          <span>Le schede più sensibili possono essere validate da realtà locali come Le Erbe della Luna, soprattutto su erbe officinali, fiori commestibili e sicurezza.</span>
-        </div>
-      </div>
-      <div class="chat">
-        <div class="chat-log" id="chat-log" aria-live="polite"></div>
-        <div class="quick-prompts" id="quick-prompts"></div>
-        <form id="chat-form">
-          <input id="chat-input" autocomplete="off" placeholder="Chiedi: posso mangiarla? che traccia è? cosa faccio ora?" />
-          <button class="primary" type="submit">Invia</button>
+          <p class="safety-note">Le informazioni hanno finalità naturalistica e divulgativa. Non consumare o utilizzare funghi, bacche, erbe o altre specie sulla base del solo risultato dell’applicazione.</p>
         </form>
       </div>
     </section>
 
-    <section class="experiences" id="esperienze">
+    <section class="atlas" id="atlante">
       <div class="section-head">
-        <p class="eyebrow">Esperienze sul territorio</p>
-        <h2>Da semplice app a strumento per scuole, famiglie e turismo lento.</h2>
-        <p>Ogni interazione può diventare una micro-missione: osservare senza raccogliere, riconoscere un habitat, confrontare specie simili, completare un percorso stagionale.</p>
-      </div>
-      <div class="experience-grid">
-        <article>
-          <span>01</span>
-          <h3>Percorsi stagionali</h3>
-          <p>Primavera per fiori ed erbe, autunno per castagni e funghi, estate per tracce e fauna notturna.</p>
-        </article>
-        <article>
-          <span>02</span>
-          <h3>Passaporto naturalistico</h3>
-          <p>Timbri locali, missioni educative e progressi salvati solo sul dispositivo.</p>
-        </article>
-        <article>
-          <span>03</span>
-          <h3>Partner autorevoli</h3>
-          <p>Contenuti validabili da guide, associazioni e competenze locali senza costruire una piattaforma complessa.</p>
-        </article>
-      </div>
-      <div class="passport-card">
         <div>
-          <p class="eyebrow">Passaporto</p>
-          <h3 id="passport-title">0 missioni completate</h3>
-          <p id="passport-copy">Completa le missioni per sbloccare il profilo da custode del territorio.</p>
+          <p class="eyebrow">Atlante della biodiversità</p>
+          <h2>Specie e tracce del territorio.</h2>
         </div>
-        <div class="progress-ring" id="progress-ring"><span>0%</span></div>
+        <p>Consulta 50 schede con elementi distintivi, ruolo nell’ecosistema, habitat, stagionalità, possibili confusioni, consigli di osservazione e fonti editoriali.</p>
       </div>
-      <div class="stamp-board" id="stamp-board"></div>
+
+      <div class="atlas-toolbar">
+        <label class="search-field" for="search-input">
+          <span>Cerca nell’Atlante</span>
+          <input id="search-input" type="search" placeholder="Nome, habitat o caratteristica…" />
+        </label>
+        <label>Categoria
+          <select id="atlas-category"></select>
+        </label>
+        <label>Habitat
+          <select id="atlas-habitat"></select>
+        </label>
+        <label>Stagione
+          <select id="atlas-season"></select>
+        </label>
+        <label>Attenzione
+          <select id="atlas-risk"></select>
+        </label>
+        <label>Ordina
+          <select id="atlas-sort">
+            <option value="name">Nome A–Z</option>
+            <option value="category">Categoria</option>
+            <option value="season">Stagione</option>
+            <option value="risk">Livello di attenzione</option>
+          </select>
+        </label>
+        <button class="text-button reset-filters" id="reset-atlas" type="button">Azzera filtri</button>
+      </div>
+
+      <div class="atlas-summary" id="atlas-summary" aria-live="polite"></div>
+      <div class="atlas-layout">
+        <aside class="species-list" id="species-list" aria-label="Elenco delle specie"></aside>
+        <article class="species-detail" id="species-detail" aria-live="polite"></article>
+      </div>
     </section>
 
-    <section class="budget" id="preventivo">
-      <div class="budget-card">
-        <p class="eyebrow">Proposta sostenibile</p>
-        <h2>Massimo impatto, minimo costo ricorrente.</h2>
-        <p>Applicativo web statico “Custodi dei Castelli Romani”: demo premium, codice sorgente consegnabile, pubblicazione su GitHub Pages e contenuti iniziali ampliabili.</p>
-        <ul>
-          <li>UX/UI scenografica mobile-first</li>
-          <li>Scanner guidato con risultati multipli e sicurezza</li>
-          <li>Atlante locale espandibile</li>
-          <li>Assistente locale con memoria nel browser</li>
-          <li>Passaporto naturalistico e micro-missioni</li>
-        </ul>
+    <section class="routes-section" id="percorsi">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Percorsi ed esperienze</p>
+          <h2>Scegli come esplorare.</h2>
+        </div>
+        <p>Percorsi tematici con osservazioni suggerite, regole di comportamento e missioni collegate. Puoi avviarli, completarli o ripeterli quando vuoi.</p>
       </div>
-      <div class="budget-side">
-        <strong>Euro 4.900 lordi</strong>
-        <span>GitHub Pages pubblico: Euro 0/anno</span>
-        <span>Dominio .it: circa Euro 11,99 + IVA/anno</span>
-        <span>Dominio con email base: circa Euro 16,49 + IVA/anno</span>
-        <small>Dominio e servizi esterni restano intestati al cliente. Nessun database, account o profilazione.</small>
+      <div class="route-list" id="route-list"></div>
+    </section>
+
+    <section class="passport-section" id="passaporto">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Passaporto naturalistico</p>
+          <h2>Le tue scoperte, in un solo luogo.</h2>
+        </div>
+        <p>Segui i progressi, completa le missioni, ritrova le specie preferite e conserva brevi note sulle tue osservazioni.</p>
+      </div>
+
+      <div class="passport-overview">
+        <div>
+          <p class="eyebrow">Il tuo percorso</p>
+          <h3 id="passport-title">Il tuo passaporto è pronto</h3>
+          <p id="passport-copy">Completa la prima missione o salva una specie dall’Atlante.</p>
+        </div>
+        <div class="passport-metrics" id="passport-metrics"></div>
+        <div class="progress-ring" id="progress-ring" aria-label="Avanzamento del passaporto"><span>Inizia</span></div>
+      </div>
+
+      <div class="passport-columns">
+        <section class="passport-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Missioni</p>
+              <h3>Piccoli gesti da Custode</h3>
+            </div>
+          </div>
+          <div class="mission-list" id="mission-list"></div>
+        </section>
+
+        <section class="passport-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Preferiti</p>
+              <h3>Specie da ritrovare</h3>
+            </div>
+          </div>
+          <div class="passport-list" id="favorites-list"></div>
+        </section>
+
+        <section class="passport-panel observations-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Osservazioni</p>
+              <h3>Il tuo taccuino</h3>
+            </div>
+          </div>
+          <form class="observation-form" id="observation-form">
+            <label>Specie
+              <select id="observation-species"></select>
+            </label>
+            <label>Nota
+              <textarea id="observation-note" maxlength="180" placeholder="Dove l’hai incontrata? Cosa hai notato?"></textarea>
+            </label>
+            <button class="primary" id="observation-submit" type="submit">Salva osservazione</button>
+          </form>
+          <div class="passport-list" id="observations-list"></div>
+        </section>
+      </div>
+
+      <section class="history-panel">
+        <div>
+          <p class="eyebrow">Consultate di recente</p>
+          <h3>Riprendi dall’ultima scheda</h3>
+        </div>
+        <div class="history-list" id="history-list"></div>
+      </section>
+    </section>
+
+    <section class="guide-section" id="guida">
+      <div class="guide-copy">
+        <p class="eyebrow">Assistente naturalistico locale</p>
+        <h2>Chiedi, confronta, approfondisci.</h2>
+        <p>Scrivi come parleresti a una guida: l’assistente consulta 50 schede e 22 approfondimenti interni su specie, habitat, ecologia, stagioni, sicurezza e percorsi.</p>
+        <div class="guide-features" aria-label="Caratteristiche della guida">
+          <span>Risposte curate</span>
+          <span>50 schede interne</span>
+          <span>Contesto della conversazione</span>
+          <span>Nessun account</span>
+        </div>
+        <p class="discreet-note">Funziona sul dispositivo. Le risposte sono divulgative e non sostituiscono il parere di esperti qualificati.</p>
+      </div>
+
+      <div class="chat" aria-label="Guida del territorio">
+        <div class="chat-toolbar">
+          <div>
+            <strong>Guida del territorio</strong>
+            <small><span aria-hidden="true"></span> Archivio locale attivo</small>
+          </div>
+          <button class="text-button light" id="reset-guide" type="button">Nuova conversazione</button>
+        </div>
+        <div class="chat-log" id="chat-log" aria-live="polite"></div>
+        <div class="quick-prompts" id="quick-prompts" aria-label="Domande suggerite"></div>
+        <form id="chat-form">
+          <label class="visually-hidden" for="chat-input">Scrivi una domanda alla guida</label>
+          <input id="chat-input" autocomplete="off" placeholder="Chiedi di una specie, una stagione o un habitat…" />
+          <button class="primary" id="chat-submit" type="submit">Chiedi</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="project-section" id="progetto">
+      <div class="project-story">
+        <p class="eyebrow">Il progetto</p>
+        <h2>Conoscere il territorio per averne cura.</h2>
+        <p>Custodi dei Castelli Romani accompagna cittadini, scuole, famiglie e visitatori nella scoperta della biodiversità. Il progetto valorizza il contributo di guide, scuole, associazioni ed esperti del territorio.</p>
+        <div class="project-values">
+          <span>Educazione ambientale</span>
+          <span>Turismo lento</span>
+          <span>Conoscenza naturalistica</span>
+          <span>Osservazione responsabile</span>
+        </div>
+      </div>
+      <div class="project-actions">
+        <h3>Dati dell’applicazione</h3>
+        <p>Consulta come vengono conservate preferenze, osservazioni e progressi oppure azzera i dati personali.</p>
+        <button class="secondary" id="open-privacy" type="button">Apri privacy e dati</button>
       </div>
     </section>
   </main>
 
-  <dialog id="memory-dialog">
-    <button class="close" id="close-memory" aria-label="Chiudi">×</button>
-    <h2>Memoria locale</h2>
-    <p>Conversazioni e timbri restano nel browser. Non vengono inviati a server esterni.</p>
-    <div id="memory-items"></div>
-    <button class="secondary dark" id="clear-memory" type="button">Svuota memoria</button>
+  <dialog id="privacy-dialog" aria-labelledby="privacy-title">
+    <button class="close" id="close-privacy" type="button" aria-label="Chiudi privacy e dati">×</button>
+    <p class="eyebrow">Privacy</p>
+    <h2 id="privacy-title">Dati dell’applicazione</h2>
+    <p>Le preferenze, le osservazioni e i progressi vengono conservati sul dispositivo utilizzato. Non è richiesta la creazione di un account.</p>
+    <div class="data-summary" id="data-summary"></div>
+    <button class="danger-button" id="request-clear-data" type="button">Azzera progressi e preferenze</button>
+    <div class="clear-confirmation" id="clear-confirmation" hidden>
+      <strong>Vuoi eliminare tutti i dati dell’app?</strong>
+      <p>L’operazione rimuoverà missioni, percorsi, preferiti, osservazioni, cronologia e conversazioni.</p>
+      <div class="form-actions">
+        <button class="danger-button" id="confirm-clear-data" type="button">Sì, elimina tutto</button>
+        <button class="text-button" id="cancel-clear-data" type="button">Annulla</button>
+      </div>
+    </div>
   </dialog>
 
-  <div class="toast" id="toast"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
   <footer>
-    <strong>Custodi dei Castelli Romani</strong>
-    <span>Concept, direzione e proposta: Alessandro Calabrò</span>
+    <div>
+      <strong>Custodi dei Castelli Romani</strong>
+      <span>Osserva, conosci e rispetta la biodiversità del territorio.</span>
+    </div>
+    <div class="footer-links">
+      <button id="footer-privacy" type="button">Privacy e dati</button>
+      <span>Ideazione e sviluppo: Alessandro Calabrò</span>
+    </div>
   </footer>
-  <script src="app.js"></script>
+
+  <script src="app.js?v=20260724-knowledge50"></script>
 </body>
 </html>
